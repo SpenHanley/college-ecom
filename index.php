@@ -1,65 +1,53 @@
 <?php
-// require_once 'db.php';
-include 'utils.php';
+include '_includes/utils.php';
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Jim's Books</title>
-  <meta charset="utf-8"  />
-  <link rel="stylesheet" href="style/main.css" />
-  <?php
-	include 'bootstrap_header.php';
-  ?>
-</head>
-<body>
-  <nav>
-	<div class="wrapper" >
-		<div class="left">
-		  <h1>Jim's Books</h1>
-		</div>
-		<div class="right">
-		  <ul>
-			<li>
-			  <a href="#">Home</a>
-			</li>
-			<li>
-			  <form action="login.php" method="post">
-				<input type="text" placeholder="Username" name="un"/>
-				<input type="password" placeholder="Password" name="pw"/>
-				<input type="submit" value="Login" />
-			  </form>
-			</li>
-		  </ul>
-		</div>
-	</div>
-  </nav>
-  <div class="wrapper">
-    <table class="table table-striped" >
-      <tr>
-        <td>
-          Cover Image
-        </td>
-        <td>
-          Author
-        </td>
-        <td>
-          Publisher
-        </td>
-        <td>
-          Price
-        </td>
-        <td>
-          Year Published
-        </td>
-        <td>
-          Genre
-        </td>
-      </tr>
-      <?php
-      populate();
-      ?>
-    </table>
-  </div>
-</body>
+    <head>
+        <title>Jim's Books</title>
+        <meta charset="utf-8">
+        
+        <?php include '_includes/bootstrap_header.php'; ?>
+        <link rel="stylesheet" href="assets/style/main.css">
+    </head>
+    <body>
+        <?php include '_includes/navigation.php'; ?>
+        
+        <div class="container">
+            <!-- table-listing is a custom CSS class in main.css -->
+            <table class="table table-striped table-listing">
+                <thead>
+                    <tr>
+                        <th>
+                            Cover Image
+                        </th>
+                        
+                        <th>
+                            Author
+                        </th>
+                        
+                        <th>
+                            Publisher
+                        </th>
+                        
+                        <th>
+                            Price
+                        </th>
+                        
+                        <th>
+                            Year Published
+                        </th>
+                        
+                        <th>
+                            Genre
+                        </th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <?php populate(); ?>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>

@@ -1,0 +1,6 @@
+.table-listing td
+{
+    display: table-cell !important;
+    vertical-align: middle !important;
+    font-size: 15pt;
+}
