@@ -5,23 +5,26 @@ $uname = ucwords($_SESSION['un']);
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Welcome <?php echo $uname; ?></title>
-		<link rel="stylesheet" href="style/conf.css">
 		<script>
 			function forward()
 			{
 				window.setTimeout(function () { window.location = "dash.php" }, 5000);
 			}
 		</script>
+		<?php include '_includes/bootstrap_header.php'; ?>
 	</head>
-	
 	<body onload="forward()">
-		<div class="wrapper">
-			<p>
-				<?= $uname ?>
-				<p>You have successfuly logged in.</p>
-				<p>You shall now be forwarded to the main dashboard. If you are not redirected click <a href="dash.php">here</a>.</p>
-			</p>
+		<div class="container">
+			<div class="text-center">
+				<div class="panel panel-primary">
+					<div class=panel-heading>
+						<h3 class="panel-title">Logged In</h3>
+					</div>
+					<div class="panel-body">
+						You have successfully logged in. You will now be redirected to the dashboard.
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

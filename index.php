@@ -12,7 +12,6 @@ include '_includes/utils.php';
     </head>
     <body>
         <?php include '_includes/navigation.php'; ?>
-        
         <div class="container">
             <!-- table-listing is a custom CSS class in main.css -->
             <table class="table table-striped table-listing">
@@ -20,6 +19,10 @@ include '_includes/utils.php';
                     <tr>
                         <th>
                             Cover Image
+                        </th>
+                        
+                        <th>
+                            Book Title
                         </th>
                         
                         <th>
@@ -49,5 +52,9 @@ include '_includes/utils.php';
                 </tbody>
             </table>
         </div>
+        
+        <?php
+            include '_includes/footer.php';
+        ?>
     </body>
 </html>

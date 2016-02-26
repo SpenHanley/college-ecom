@@ -33,7 +33,7 @@ class DB
     // be done with style sheets and layouts within html
     public function query_books()
     {
-        $query = $this->db->query('SELECT authors.author, publishers.publisher, genres.genre, year, price, img_path, book_title
+        $query = $this->db->query('SELECT authors.author, publishers.publisher, genres.genre, year, price, img_path, book_title, isbn_no
             FROM books
             INNER JOIN authors
             ON books.author_id = authors.author_id
