@@ -14,7 +14,7 @@ include '_includes/utils.php';
         <?php include '_includes/navigation.php'; ?>
         <div class="container">
             <!-- table-listing is a custom CSS class in main.css -->
-            <table class="table table-striped table-listing">
+            <table class="table table-striped table-listing header-fixed">
                 <thead>
                     <tr>
                         <th>
@@ -48,11 +48,19 @@ include '_includes/utils.php';
                 </thead>
                 
                 <tbody>
-                    <?php populate(); ?>
+                    <?php populate(true); ?>
                 </tbody>
             </table>
         </div>
-        
+        <script>
+        function addRow()
+        {
+            $.ajax({
+                url: '_includes/new_row.php',
+                success: console.log('Yay it worked')
+            });
+        }
+        </script>
         <?php
             include '_includes/footer.php';
         ?>

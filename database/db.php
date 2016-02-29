@@ -45,6 +45,15 @@ class DB
         $query->execute();
         return $query;
     }
+    
+    function add($table, $value)
+    {
+        $table = $table . "s";
+        $query = $this->db->prepare('INSERT INTO `' . $table . '` VALUES(NULL, :val)');
+        $query->execute([":val" => $value]);
+        return $this->db->lastInsertId();
+    }
+    
     public function get_current($cur)
     {
         $query = $this->db->prepare('SELECT * FROM `' . $cur . 's`');
