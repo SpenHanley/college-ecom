@@ -39,6 +39,7 @@ if (empty($books))
                     <a href="#">Add User</a>
                 </li>
             </ul>
+            
             <div id="wrapper_add" >
                 <form action="add.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
@@ -60,7 +61,7 @@ if (empty($books))
                             <option value="new">Other</option>
                         </select>
                         
-                        <input type="text" class="form-control hidden" name="author" id="new_au">
+                        <input type="text" class="form-control hidden" id="new_au">
                     </div>
                     
                     <div class="form-group">
@@ -71,7 +72,7 @@ if (empty($books))
                             ?>
                             <option value="new">Other</option>
                         </select>
-                        <input type="text" class="form-control hidden" name="publisher" id="new_pub">
+                        <input type="text" class="form-control hidden" id="new_pub">
                     </div>
                     
                     <div class="form-group">
@@ -82,7 +83,7 @@ if (empty($books))
                             ?>
                             <option value="new">Other</option>
                         </select>
-                        <input type="text" class="form-control hidden" name="genre" id="new_gen">
+                        <input type="text" class="form-control hidden" id="new_gen">
                     </div>
                     
                     <div class="form-group">
@@ -97,7 +98,7 @@ if (empty($books))
                     
                     <div class="form-group">
                         <label for="cover">Cover Image <span class="glyphicon glyphicon-upload"></span></label>
-                        <input type="file" name="img" id="cover" class="hidden" accept="image/*" >
+                        <input type="file" name="cover" id="cover" class="hidden" accept="image/*" >
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Add</button>
@@ -111,6 +112,10 @@ if (empty($books))
                         <tr>
                             <th>
                                 Cover Image
+                            </th>
+                            
+                            <th>
+                                Title
                             </th>
                             
                             <th>
@@ -220,12 +225,23 @@ if (empty($books))
         <script type="text/javascript">
             var books = "";
         
-            function show_extra(el, counter)
+            function show_extra(el, counter, name)
             {
                 if (el.value == 'new')
                 {
-                    document.getElementById(counter).className = "";
+                    c = document.getElementById(counter).className = "";
+                    if (counter == 'new_au')
+                    {
+                        c.setAttribute('name', "author");
+                    } else if (counter == 'new_pub')
+                    {
+                        c.setAttribute('name', "publisher");
+                    } else if (counter == 'new_gen')
+                    {
+                        c.setAttribute('name', "genre");
+                    }
                     el.name = "";
+                    
                 }
             }
             

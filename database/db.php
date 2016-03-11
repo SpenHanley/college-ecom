@@ -46,6 +46,21 @@ class DB
         return $query;
     }
     
+    function add_book($isbn, $title, $author, $publisher, $genre, $year, $price, $cover)
+    {
+        if ($cover != null)
+        {
+        $query = $this->db->prepare('INSERT INTO books (isbn_no, book_title, author_id, year, price, publisher_id, genre_id, img_path) VALUES(:in, :bt, :ai, :yr, :pr, :pi, :gi, :ip)');
+        $query->execute([':in' => $isbn, ':bt' => $title, ':ai' => $author, ':yr' => $year, ':pr' => $price, ':pi' => $publisher, ':gi' => $genre, ':ip' => $cover]);
+        } else
+        {
+        $query = $this->db->prepare('INSERT INTO books (isbn_no, book_title, author_id, year, price, publisher_id, genre_id) VALUES(:in, :bt, :ai, :yr, :pr, :pi, :gi)');
+        $query->execute([':in' => $isbn, ':bt' => $title, ':ai' => $author, ':yr' => $year, ':pr' => $price, ':pi' => $publisher, ':gi' => $genre]);
+        }
+        
+        return $query;
+    }
+    
     function add($table, $value)
     {
         $table = $table . "s";
