@@ -229,18 +229,20 @@ if (empty($books))
             {
                 if (el.value == 'new')
                 {
-                    c = document.getElementById(counter).className = "";
+                    var element = document.getElementById(counter);
+                    element.className = "";
+                    var name = document.createAttribute('name');
                     if (counter == 'new_au')
                     {
-                        c.setAttribute('name', "author");
+                        name.value = "author";
                     } else if (counter == 'new_pub')
                     {
-                        c.setAttribute('name', "publisher");
+                        name.value = "publisher";
                     } else if (counter == 'new_gen')
                     {
-                        c.setAttribute('name', "genre");
+                        name.value = "genre";
                     }
-                    el.name = "";
+                    element.setAttributeNode(name);
                     
                 }
             }

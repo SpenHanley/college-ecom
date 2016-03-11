@@ -2,7 +2,7 @@
 require '_includes/utils.php';
 
 $isbn = $_POST['isbn'];
-$title = $_POST['title'];
+$title = $_POST['title']
 $author = $_POST['author'];
 $publisher = $_POST['publisher'];
 $genre = $_POST['genre'];
@@ -26,8 +26,7 @@ if (isset($_FILES['cover']))
     echo $ext;
     
     if (!(in_array($ext, $allowed))) {
-        // header('Location: bdInsert.php?err=Bad Filetype');
-        echo "This file type is not allowed";
+        header('Location: bdInsert.php?err=Bad Filetype');
     } else if ($error === 0)
     {
         $cover_name_new = $isbn.'.'.$ext;
@@ -70,26 +69,15 @@ if (!is_numeric($genre))
     $genre = update_field('genre', $genre);
 }
 
-echo 'Genre ID: '.$genre;
-echo 'Publisher ID: '.$publisher;
-echo 'Author ID: '.$author;
-
-
 $query = $db->add_book($isbn, $title, $author, $publisher, $genre, $year, $price, $cover_path);
 
-if ($query)
+if ($query->fetch() > 0)
 {
-    // header('Location: gdInsert.php?tl='.$title);
+    header('Location: dash.php');
 }
 
 if (empty($isbn) || empty($title) || empty($author) || empty($publisher) || empty($genre) || empty($price) || empty($year) || empty($img)) {
-    // header('Location: bdInsert.php?err=Missing%20Parameter');
-}
-
-if ($_FILES["file"]["error"] > 0) {
-    echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
-} else {
-
+    header('Location: bdInsert.php?err=Missing%20Parameter');
 }
 
 ?>
