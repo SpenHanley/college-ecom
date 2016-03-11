@@ -74,11 +74,17 @@ class Auth
         // Don't register someone with existing
         // username.
         $stmnt = $db->prepare('SELECT COUNT(*) as `count` FROM users WHERE `uname`=:un');
-        $stmt->execute([':un' => $username]);
+        $stmnt->execute([':un' => $username]);
         
         if ($stmnt->fetch()['count'] > 0)
         {
             // User exists
+            $id = $stmnt->fetch()['uid'];
+        } else
+        {
+            $stmnt = $db->prepare('INSERT INTO users (uname, pword) VALUES (:un, :pw)');
+            $stmnt->execute([':un' => $username, ':pw' => $password]);
+            $id = $db->lastInsertId();
         }
         
         if ($id === 0)

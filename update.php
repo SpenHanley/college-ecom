@@ -11,6 +11,10 @@ $price = $_POST['price'];
 $year = $_POST['year'];
 $cover = $_POST['img'];
 
+if (empty($isbn) || empty($title) || empty($author) || empty($publisher) || empty($genre) || empty($price) || empty($year) || empty($cover)) {
+    header('Location: bdUpdate.php?err=Missing%20Parameter');
+}
+
 // I need to find a way to turn this into a single function so that I am not repeating it each time :(
 $publisher = update_field('publisher', $publisher);
 $author = update_field('author', $author);

@@ -16,13 +16,6 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
             </ul>
-            
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
             <?php if (!Auth::check()) {?>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="login_form.php">Login</a></li>

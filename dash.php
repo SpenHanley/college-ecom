@@ -35,12 +35,12 @@ if (empty($books))
                 <li role="presentation" onclick="toggle(this); show_update(); populate_update()">
                     <a href="#">Update</a>
                 </li>
+                <li role="presentation" onclick="toggle(this); show_add_user()">
+                    <a href="#">Add User</a>
+                </li>
             </ul>
-                <!--<button class="btn btn-default" type="button" onclick="change('add')">Add</button>-->
-                <!--<button class="btn btn-default" type="button" onclick="change('list')">List</button>-->
-                <!--<button class="btn btn-default" type="button" onclick="change('update')">Update</button>-->
             <div id="wrapper_add" >
-                <form action="update" method="post">
+                <form action="add.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="isbn" >ISBN No.</label>
                         <input type="text" class="form-control" name="isbn" id="isbn">
@@ -97,7 +97,7 @@ if (empty($books))
                     
                     <div class="form-group">
                         <label for="cover">Cover Image <span class="glyphicon glyphicon-upload"></span></label>
-                        <input type="file" name="img" id="cover" class="hidden" accept="image/*">
+                        <input type="file" name="img" id="cover" class="hidden" accept="image/*" >
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Add</button>
@@ -196,6 +196,22 @@ if (empty($books))
                     </div>
                 </form>
             </div>
+            
+            <div id="wrapper_add_user">
+                <form method="post" action="add_user.php">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" name="username" required="true" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" required="true" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Add User</button>
+                    </div>
+                </form>
+            </div>
         </div>
         
         <?php
@@ -262,17 +278,27 @@ if (empty($books))
                 $('#wrapper_add').show();
                 $('#wrapper_update').hide();
                 $('#wrapper_list').hide();
+                $('#wrapper_add_user').hide();
+            }
+            
+            function show_add_user() {
+                $('#wrapper_add_user').show();
+                $('#wrapper_add').hide();
+                $('#wrapper_update').hide();
+                $('#wrapper_list').hide();
             }
             
             function show_update() {
                 $('#wrapper_update').show();
                 $('#wrapper_add').hide();
+                $('#wrapper_add_user').hide();
                 $('#wrapper_list').hide();
             }
             
             function show_list() {
                 $('#wrapper_list').show();
                 $('#wrapper_add').hide();
+                $('#wrapper_add_user').hide();
                 $('#wrapper_update').hide();
             }
         </script>
