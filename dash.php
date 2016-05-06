@@ -22,20 +22,20 @@ if (empty($books))
         ?>
         <link rel="stylesheet" href="assets/style/main.css">
     </head>
-    <body onload="show_list()">
+    <body onload="show_list(); ">
         <?php include '_includes/navigation.php'; ?>
         <div class="container">
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active" onclick="toggle(this); show_list()">
+                <li role="presentation" class="active" onclick="toggle(this); show_list();">
                     <a href="#">List</a>
                 </li>
-                <li role="presentation" onclick="toggle(this); show_add()">
+                <li role="presentation" onclick="toggle(this); show_add();">
                     <a href="#">Add Book</a>
                 </li>
-                <li role="presentation" onclick="toggle(this); show_update(); populate_update()">
+                <li role="presentation" onclick="toggle(this); show_update(); populate_update();">
                     <a href="#">Update</a>
                 </li>
-                <li role="presentation" onclick="toggle(this); show_add_user()">
+                <li role="presentation" onclick="toggle(this); show_add_user();">
                     <a href="#">Add User</a>
                 </li>
             </ul>
@@ -194,7 +194,6 @@ if (empty($books))
                     <div class="form-group">
                         <label for="u_cover">Cover Image</span></label>
                         <input type="text" name="img" id="u_cover" class="form-control"/>
-                        <!--<input type="file" name="img" id="cover" class="hidden" accept="image/*">-->
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Update</button>
@@ -245,11 +244,6 @@ if (empty($books))
                     element.setAttributeNode(name);
                     
                 }
-            }
-            
-            function populate_update()
-            {
-                books = <?php echo json_encode($books); ?>;
             }
             
             function populate_info(title)
@@ -318,6 +312,11 @@ if (empty($books))
                 $('#wrapper_add').hide();
                 $('#wrapper_add_user').hide();
                 $('#wrapper_update').hide();
+            }
+            
+            function populate_update()
+            {
+                books = <?= json_encode($books); ?>;
             }
         </script>
     </body>

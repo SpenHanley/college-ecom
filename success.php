@@ -1,6 +1,5 @@
 <?php
 session_start();
-$uname = ucwords($_SESSION['un']);
 ?>
 <!DOCTYPE html>
 <html>

@@ -2,7 +2,7 @@
 require '_includes/utils.php';
 
 $isbn = $_POST['isbn'];
-$title = $_POST['title']
+$title = $_POST['title'];
 $author = $_POST['author'];
 $publisher = $_POST['publisher'];
 $genre = $_POST['genre'];
@@ -71,7 +71,8 @@ if (!is_numeric($genre))
 
 $query = $db->add_book($isbn, $title, $author, $publisher, $genre, $year, $price, $cover_path);
 
-if ($query->fetch() > 0)
+// If the query was successful, return the user to the dash page
+if ($query)
 {
     header('Location: dash.php');
 }

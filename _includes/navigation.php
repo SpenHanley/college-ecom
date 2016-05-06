@@ -19,7 +19,6 @@
             <?php if (!Auth::check()) {?>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="login_form.php">Login</a></li>
-                <li><a href="#">Register</a></li>
             </ul>
             <?php
             } else {
